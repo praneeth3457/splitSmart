@@ -1,0 +1,29 @@
+{
+  "name": "split-smart",
+  "version": "1.0.0",
+  "description": "A Project for settling up your groups splitted totals in a clever way.",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "morgan": "^1.7.0"
+  },
+  "devDependencies": {
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.8"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/praneeth3457/Projects.git"
+  },
+  "author": "Praneeth R R Veerlapally",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/praneeth3457/Projects/issues"
+  },
+  "homepage": "https://github.com/praneeth3457/Projects#readme"
+}

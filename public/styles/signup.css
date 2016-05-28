@@ -1,0 +1,14 @@
+.loginTbl th, .loginTbl td, .newGroupTbl th, .newGroupTbl td, .addaMemberTbl th, .addaMemberTbl td{
+	border:none !important;
+	width: 33%;
+}
+.groupTbl td, .addBillModalTbl th, .addBillModalTbl td{
+	border:none !important;
+	padding:10px;
+}
+.groupTbl tbody td{
+	vertical-align: middle !important;
+}
+.loginTbl td input{
+	width:100%;
+}

@@ -1,0 +1,228 @@
+<div ng-controller="groupCntrl as group">
+	<div ng-if="group.userExist == false">
+		<h4 class='text-muted text-center'>Please sign in to add a new group or view your groups!</h4>
+	</div>
+	<!-- IF GROUPS EXIST -->
+	<div ng-if="group.userExist == true">
+		<!-- View all Groups -->
+		<div ng-if="group.viewGroups == true">
+			<h3>Your Groups</h3>
+			<hr/>
+			<h4 class='text-muted text-center' ng-if="group.viewGrpsLength == 0">You don't have any groups!</h4>
+			<table class="table groupTbl" ng-if="group.viewGrpsLength != 0">
+				<thead>
+					<tr class="text-muted">
+						<th>Sno.</th>
+						<th>Name</th>
+						<th>Type</th>
+						<th class="text-right">Members</th>
+						<th class="text-center">Add a Bill</th>
+						<th class="text-center">Add a Member</th>
+						<th class="text-center">Messages</th>
+						<th class="text-center">Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="grp in group.viewGrps">
+						<td>{{$index + 1}}</td>
+						<td ng-model="group.gnames.gname">{{grp.gname}}</td>
+						<td ng-model="group.gnames.gtype">{{grp.gtype}}</td>
+						<td class="text-right">{{grp.gmembers.length}}</td>
+						<td class="text-center"><button type="button" class="btn btn-success" data-toggle="modal" data-target="#addBillModal" data-backdrop="static" ng-click="group.getGroupUsers(grp.gname)">Add a Bill</button></td>
+						<td class="text-center"><button type="button" class="btn btn-success" ng-click="group.addMember(grp.gname, grp.gtype)">Add Member</button></td>
+						<td class="text-center"><a href="#/groupMessages" ng-click="group.viewMessages(grp)">View Messages</a></td>
+						<td class="text-center"><a class="neg bold" href="" data-toggle="modal" data-target="#deleteGrpModal" data-backdrop="static" ng-click="group.delete(grp.gname)">X</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<hr/>
+			<button type="button" class="btn btn-success" ng-click="group.addNewGroup()">Add New Group</button>
+		</div>
+		
+		<!-- Add New Group -->
+		<div ng-if="group.newGroup == true">
+			<h3 class="text-center">Do you want to add a new group?</h3>
+			<form>
+			<table class="table newGroupTbl">
+		    	<tr>
+		    		<th class="text-right space2"><label for="groupName"><h4>Group Name:</h4></label></th>
+		    		<td class="text-left space2"><input type="text" class="tspace1 bspace1 lspace2 radius1 form-control" id="groupName" ng-model="group.addGroup.gname" required placeholder="Group name"/></td>
+		            <td></td>
+		    	</tr>
+		    	<tr>
+		    		<th class="text-right space2"><label for="groupType"><h4>Group Type:</h4></label></th>
+		    		<td class="text-left space2 form-group">
+		    			<select class="tspace1 bspace1 lspace2 radius1 form-control" id="groupType" ng-model="group.addGroup.gtype">
+		    				<option value="apartment">Apartment</option>
+		    				<option value="house">House</option>
+		    				<option value="trip">Trip</option>
+		    				<option value="other">Other</option>
+		    			</select>
+		    		</td>
+		            <td></td>
+		    	</tr>
+		    	<tr>
+		    		<td></td>
+		    		<td>
+		    			<button type="button" class="btn btn-success form-control" ng-click="group.addaGroup()">Done</button>
+		    		</td>
+		            <td></td>
+		    	</tr>
+		    </table>
+		    </form>
+
+		   <hr/>
+
+		   <h3 class="text-center">Already have a group?</h3>
+		   <h5 class="text-center toffset3"><a href="" ng-click="group.viewGrp()">Click here to view your groups</a></h5>
+	    </div>
+
+	    <!-- Add a Member to a Group -->
+	    <div ng-if="group.addaMember == true">
+
+	   		<!-- Error Message -->
+		    <div class="alert alert-danger" role="alert" ng-if="group.isExist == true">
+				<h5 class="alert-link"><i class="glyphicon glyphicon-warning-sign rspace2"></i>User doesn't exist. Before adding it to a group user should have an account!</h5>
+			</div>
+
+			<!-- Add member to a group view -->
+	   		<h3 class="text-center">Add a Member</h3>
+	   		<hr/>
+	   		<table class="table addaMemberTbl">
+		    	<tr>
+		    		<th class="text-right space2"><label for="groupName"><h4>Group Name:</h4></label></th>
+		    		<td class="text-left space2">{{group.addaMemberGname}}</td>
+		            <td></td>
+		    	</tr>
+		    	<tr>
+		    		<th class="text-right space2"><label for="groupType"><h4>Group Type:</h4></label></th>
+		    		<td class="text-left space2">{{group.addaMemberGtype}}</td>
+		            <td></td>
+		    	</tr>
+		    	<tr>
+		    		<th class="text-right space2"><label for="memberName"><h4>Member Name:</h4></label></th>
+		    		<td class="text-left space2">
+		    			<input type="text" class="tspace1 bspace1 lspace2 radius1 form-control" id="memberName" ng-model="group.addaMemberName" required placeholder="Member name"/></td>
+		    		</td>
+		            <td></td>
+		    	</tr>
+		    	<tr>
+		    		<th class="text-right space2"><label for="groupType"><h4>Username:</h4></label></th>
+		    		<td class="text-left space2">
+		    			<input type="text" class="tspace1 bspace1 lspace2 radius1 form-control" id="memberUsername" ng-model="group.addaMemberUname" required placeholder="Member username"/></td>
+		    		</td>
+		            <td></td>
+		    	</tr>
+		    	<tr>
+		    		<td></td>
+		    		<td>
+		    			<button type="button" class="btn btn-success form-control" ng-click="group.addaMemberFun(group.addaMemberGname, group.addaMemberName, group.addaMemberUname)">Add</button>
+		    		</td>
+		            <td></td>
+		    	</tr>
+		    </table>
+		    <hr/>
+	    </div>
+	</div>
+
+	<!-- ADD BILL MODAL -->
+	<div id="addBillModal" class="modal fade" role="dialog">
+  		<div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content" ng-if="group.billStatus != 'success'">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">X</button>
+		        <h4 class="modal-title">Add a Bill</h4>
+		      </div>
+		      <div class="modal-body">
+		        <table class="table addBillModalTbl">
+					<tr>
+						<td class="text-right">
+							<label for="user">User : </label>
+						</td>
+						<td>
+							<select class="form-control" id="user" ng-model="group.bill.userSelected" ng-options="u.name for u in group.groupUsers">
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right"><label for="for">For : </label></td>
+						<td>
+							<select multiple class="form-control" ng-model="group.bill.forSelected" ng-options="u.name for u in group.groupUsers">
+								<option value="all">All</option>
+							</select>
+				        </div>
+						</td>
+					</tr>
+					<tr>
+						<td class="text-right"><label for="description">Enter Description : </label></td>
+						<td><input class="form-control" type="text" id="description" ng-model="group.bill.description"/></td>
+					</tr>
+					<tr>
+						<td class="text-right"><label for="date">Date : </label></td>
+						<td><input class="form-control" type="date" id="date" ng-model="group.bill.date"/></td>
+					</tr>
+					<tr>
+						<td class="text-right"><label for="amount">Amount : </label></td>
+						<td><input class="form-control" type="number" id="amount" ng-model="group.bill.amount"/></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button class="toffset2 btn btn-success" type="button" ng-click="group.billSubmit(group.gname)">Submit</button>
+						</td>
+					</tr>
+				</table>
+		      </div>
+		    </div>
+
+		    <div class="modal-content" ng-if="group.billStatus == 'success'">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">X</button>
+		      </div>
+		      <div class="modal-body">
+		      	<h3 class="glyphicon glyphicon-check pos text-center width">Bill successfully added!</h3>
+		      </div>
+		      <div class="modal-footer">
+		 		<button class="toffset2 btn btn-success" type="button" ng-click="group.addOnemore()">Add One More</button>
+		 		<button type="button" class="btn btn-default toffset2" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+  		</div>
+	</div>
+	
+	<!-- Delete Group Modal -->
+	<div id="deleteGrpModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-md">
+		    <div class="modal-content">
+			  <div class="modal-header">
+			    <button type="button" class="close" data-dismiss="modal">X</button>
+			  </div>
+			  <div class="modal-body">
+			  	<h4 class="text-center width">Are you sure you want delete this group? {{group.grpDelete}}</h3>
+			  </div>
+			  <div class="modal-footer">
+					<button class="toffset2 btn btn-danger" type="button" ng-click="group.addOnemore(group.grpDelete)">Yes</button>
+					<button type="button" class="btn btn-default toffset2" data-dismiss="modal">No</button>
+			  </div>
+		    </div>
+	    </div>
+	</div><!-- Delete Group Modal Ends-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,97 @@
+/*comman css classes*/
+	/*For Margin*/
+	.offset1{margin: 5px;}
+	.offset2{margin: 10px;}
+	.offset3{margin: 15px;}
+	.offset4{margin: 20px;}
+	.offset5{margin: 25px;}
+	.offset6{margin: 30px;}
+
+	.toffset1{margin-top: 5px;}
+	.toffset2{margin-top: 10px;}
+	.toffset3{margin-top: 15px;}
+	.toffset4{margin-top: 20px;}
+	.toffset5{margin-top: 25px;}
+	.toffset6{margin-top: 30px;}
+	
+	.boffset1{margin-bottom: 5px;}
+	.boffset2{margin-bottom: 10px;}
+	.boffset3{margin-bottom: 15px;}
+	.boffset4{margin-bottom: 20px;}
+	.boffset5{margin-bottom: 25px;}
+	.boffset6{margin-bottom: 30px;}
+
+	.loffset1{margin-left: 5px;}
+	.loffset2{margin-left: 10px;}
+	.loffset3{margin-left: 15px;}
+	.loffset4{margin-left: 20px;}
+	.loffset5{margin-left: 25px;}
+	.loffset6{margin-left: 30px;}
+
+	.roffset1{margin-right: 5px;}
+	.roffset2{margin-right: 10px;}
+	.roffset3{margin-right: 15px;}
+	.roffset4{margin-right: 20px;}
+	.roffset5{margin-right: 25px;}
+	.roffset6{margin-right: 30px;}
+
+	/*For Padding*/
+	.space1{padding: 5px;}
+	.space2{padding: 10px;}
+	.space3{padding: 15px;}
+	.space4{padding: 20px;}
+	.space5{padding: 25px;}
+	.space6{padding: 30px;}
+
+	.tspace1{padding-top: 5px;}
+	.tspace2{padding-top: 10px;}
+	.tspace3{padding-top: 15px;}
+	.tspace4{padding-top: 20px;}
+	.tspace5{padding-top: 25px;}
+	.tspace6{padding-top: 30px;}
+	
+	.bspace1{padding-bottom: 5px;}
+	.bspace2{padding-bottom: 10px;}
+	.bspace3{padding-bottom: 15px;}
+	.bspace4{padding-bottom: 20px;}
+	.bspace5{padding-bottom: 25px;}
+	.bspace6{padding-bottom: 30px;}
+
+	.lspace1{padding-left: 5px;}
+	.lspace2{padding-left: 10px;}
+	.lspace3{padding-left: 15px;}
+	.lspace4{padding-left: 20px;}
+	.lspace5{padding-left: 25px;}
+	.lspace6{padding-left: 30px;}
+
+	.rspace1{padding-right: 5px;}
+	.rspace2{padding-right: 10px;}
+	.rspace3{padding-right: 15px;}
+	.rspace4{padding-right: 20px;}
+	.rspace5{padding-right: 25px;}
+	.rspace6{padding-right: 30px;}
+
+	/*Font Styles*/
+	.bold{font-weight: bold;}
+	.italic{font-style: italic;}
+
+	/*Float*/
+	.pull-right{float: right;}
+	.pull-left{float: left;}
+	.text-center{text-align: center;}
+
+	.radius1{border-radius: 5px;}
+	.radius2{border-radius: 10px;}
+	.radius3{border-radius: 15px;}
+	.radius4{border-radius: 20px;}
+	.radius5{border-radius: 25px;}
+
+	/*Neg & Pos*/
+
+	.neg{color:#CC0000;}
+	.pos{color:green;}
+	.neg:hover{color:#CC0000;}
+	.pos:hover{color:green;}
+
+	.width{width:100%;}
+

@@ -1,0 +1,118 @@
+
+/*Main css*/
+body{
+	background: #dbdbdb;
+}
+.main{
+	background: #fff;
+	min-height: 750px;
+	li{
+		padding:0 !important;
+		a{
+			padding: 20px;
+		}
+	}
+}
+.appHeading{
+	margin-right: 2%;
+	color: #CC0000;
+    font-weight: 900;
+    font-family: fantasy;
+    font-size: 48px;
+}
+.nav{
+	margin-left: 3%;
+	margin-right: 3%;
+}
+.mainMenu{
+	border-radius: 100px;
+	background: #232f3e;
+	width: 100px;
+	height: 100px; 
+	border:none; 
+	color: #fff;
+	display: inline;
+	float:left;
+}
+.nav li a{
+	margin: 0 !important;
+    height: 100%;
+    width: 100%;
+    padding-top: 27px !important;
+    color: #D9F0F0;
+    text-align: center;
+    font-weight: 500;
+    font-family: monospace;
+    font-size: 16px;
+}
+.nav li a:hover, .nav li a:focus{
+	background-color: transparent;
+}
+
+.mainMenu:hover{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	background:#5F9EA0;
+	transition-duration: 0.25s;	
+}
+.active{
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	background: #006666;
+	transition-duration: 0.25s;	
+	
+}
+.mainMenu:hover a, .active a{
+	color: #E6F0F5 !important;
+}
+.sign{
+	font-size:11px;
+}
+
+.view{
+	width:96%;
+	border: 1px solid #dbdbdb;
+	
+	border-radius: 50px;
+	margin-left: 2%;
+	margin-top: 30px;
+	padding:20px 30px;
+}
+
+.groupBalancePanel{
+	padding:0 20px;
+	border-top:5px solid #006666;
+}
+.groupBalancePanel:hover{
+	padding:0 20px;
+	border-top:5px solid #00284d;
+}
+
+.groupBalancePanela{
+	background-color: transparent !important;
+}
+.groupBalancePanela:hover, .groupBalancePanela:focus{
+	text-decoration: none;
+}
+.billDescription th, .billDescription td{
+	border: none !important;
+	padding:10px 15px !important;
+}
+.billDescription tbody tr{
+	background-color: #F0F0F0 !important;
+	border-bottom: 10px solid #fff !important;
+	padding:10px 15px !important;
+}
+.groupBalancePanel{
+	margin-top: 20px !important;
+}
+
+#deleteGrpModal .modal-header{
+	border-bottom: none;
+}
+#deleteGrpModal .modal-footer{
+	border-top: none;
+}
+#deleteGrpModal .modal-footer button{
+	margin-left: 15px;
+	padding-left: 20px;
+    padding-right: 20px;
+}

@@ -1,0 +1,48 @@
+<div ng-controller="signCntrl as sign">
+	<h3>SIGN UP</h3><hr>
+	<h5 ng-if="sign.signupError == true" class="neg text-center">{{sign.signupErrorMsg}}</h6>
+	<table class="table loginTbl" ng-if="sign.signup != 'success'">
+    	<tr>
+    		<th class="text-right space2"><label for="firstName"><h4>First Name:</h4></label></th>
+    		<td class="text-left space2"><input type="text" class="tspace1 bspace1 lspace2 radius1" id="firstName" ng-model="sign.regUser.fname" required placeholder="First Name" ng-change="sign.errorfname(sign.regUser.fname)"/></td>
+    		<td ng-if="sign.checkfname == false" class="neg tspace3">First name should be in between 3 & 16 alphabets!</td>
+    	</tr>
+    	<tr>
+    		<th class="text-right space2"><label for="lastName"><h4>Last Name:</h4></label></th>
+    		<td class="text-left space2"><input type="text" class="tspace1 bspace1 lspace2 radius1" id="lastName" ng-model="sign.regUser.lname" required placeholder="Last Name" ng-change="sign.errorlname(sign.regUser.lname)"/></td>
+    		<td ng-if="sign.checklname == false" class="neg tspace3">Last name should be in between 3 & 16 alphabets!</td>
+    	</tr>
+    	<tr>
+    		<th class="text-right space2"><label for="email"><h4>Email:</h4></label></th>
+    		<td class="text-left space2"><input type="email" class="tspace1 bspace1 lspace2 radius1" id="email" ng-model="sign.regUser.email" required placeholder="Your email Id" ng-change="sign.erroremail(sign.regUser.email)"/></td>
+    		<td ng-if="sign.checkemail == false" class="neg tspace3">Email should be 'abc@xyz.com' format!</td>
+    	</tr>
+    	<tr>
+    		<th class="text-right space2"><label for="userName"><h4>User Name:</h4></label></th>
+    		<td class="text-left space2"><input type="text" class="tspace1 bspace1 lspace2 radius1" id="userName" ng-model="sign.regUser.username" required placeholder="Your user name" ng-change="sign.errorusername(sign.regUser.username)"/></td>
+    		<td ng-if="sign.checkusername == false" class="neg tspace3">User name should be in between 3 & 10 alphanumeric characters!</td>
+    	</tr>
+    	<tr>
+    		<th class="text-right space2"><label for="password"><h4>Password:</h4></label></th>
+    		<td class="text-left space2"><input type="password" class="tspace1 bspace1 lspace2 radius1" id="password" ng-model="sign.regUser.password" required placeholder="Enter password"/></td>
+    		<td></td>
+    	</tr>
+    	<tr>
+    		<th class="text-right space2"><label for="cpassword"><h4>Confirm Password:</h4></label></th>
+    		<td class="text-left space2"><input type="password" class="tspace1 bspace1 lspace2 radius1" id="cpassword" ng-model="sign.cpassword" required placeholder="Confirm password"/></td>
+    		<td></td>
+    	</tr>
+    	<tr>
+    		<td></td>
+    		<td>
+    			<button type="button" class="btn btn-default" ng-click="sign.registerUser()">Sign up</button>
+    			<a href="#/signIn" class="loffset2">Already a User</a>
+    		</td>
+    		<td></td>
+    	</tr>
+    </table>
+    <div ng-if="sign.signup == 'success'" class="text-center">
+	    <h3 class="glyphicon glyphicon-check pos text-center width">Successfully Registered!</h3>
+	    <h4 class="text-center width"><a href="#/signIn" >Sign In</a></h4>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<div class="col-xs-12" ng-controller="groupBalanceCntrl as groupBal">
+	<div class="col-xs-4" ng-if="groupBal.groups.length > 0">
+	<!-- <pre>{{groupBal.groups | json}}</pre> -->
+		<select class="form-control" ng-model="groupBal.selectedOption" ng-options="g.gname for g in groupBal.groups" ng-change="groupBal.getGroupDetails(groupBal.selectedOption)">
+        <option value="" ng-if="false"></option>
+		</select>
+	</div>
+	<hr class="col-xs-12" ng-if="groupBal.groups.length > 0"/>
+	<div class="panel-group col-xs-12" ng-if="groupBal.groups.length > 0">
+        <div class="panel panel-default groupBalancePanel row" ng-repeat="member in groupMemberDetails">
+            <a data-toggle="collapse" href=".{{$index}}" class="panel-heading groupBalancePanela row" ng-init="openContainer = {{$index}}.open">
+                <!-- <h4 class="glyphicon glyphicon-chevron-right"></h4> -->
+                <h4 class="float-left col-xs-6" ng-model="openContainer">
+                    <i class="glyphicon glyphicon-chevron-right" ng-class="{'glyphicon glyphicon-chevron-down': {{$index}}open, 'glyphicon glyphicon-chevron-right': !{{$index}}open}"></i>
+                  {{member.MemberName}}
+                </h4>
+                <table class="float-right col-xs-6">
+                	<thead>
+                		<tr>
+                			<th class="text-right">You Owe</th>
+                			<th class="text-right">You are Owed</th>
+                			<th class="text-right">Total Balance</th>
+                		</tr>
+                	</thead>
+                	<tbody>
+                		<tr>
+                			<td class="text-right" ng-class="{pos: member.owed > 0}">{{member.owed | currency}}</td>
+                			<td class="text-right" ng-class="{neg: member.owes > 0}">{{member.owes | currency}}</td>
+                			<td class="text-right" ng-class="{pos: member.tbalance > 0 , neg: member.tbalance < 0}">{{member.tbalance | currency}}</td>
+                		</tr>
+                	</tbody>
+                </table>
+            </a>
+            <div id="collapse{{$index}}" class="panel-collapse collapse {{$index}}" ng-init="container = openContainer" ng-class="{'collapse in':container,'collapse':!container}">
+                <div class="panel-body">
+                	<table class="table billDescription" ng-if="member.records.length > 0">
+        	        	<thead>
+        	        		<tr>
+        	        			<th>Sno.</th>
+                                <th>Date</th>
+        	        			<th>Bill By</th>
+        	        			<th>Bill For</th>
+                                <th class="text-right">Amount</th>
+        	        			<th>Description</th>
+        	        			<th class="text-right">You Owe</th>
+        	        			<th class="text-right">You are Owed</th>
+        	        			<th class="text-right">Balance</th>
+        	        		</tr>
+        	        	</thead>
+        	        	<tbody>
+        	        		<tr ng-repeat="rec in member.records track by $index">
+        	        			<td>{{$index + 1}}</td>
+                                <td>{{rec.date | date}}</td>
+        	        			<td>{{rec.billBy}}</td>
+        	        			<td>{{rec.billFor.length}} <i class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="click" data-target="#{{index}}"></i></td>
+                                <td class="text-right">{{rec.amount | currency}}</td>
+        	        			<td>{{rec.description}}</td>
+        	        			<td class="text-right neg">{{rec.owes | currency}}</td>
+        	        			<td class="text-right pos">{{rec.owed | currency}}</td>
+        	        			<td class="text-right" ng-class="{pos: rec.balance > 0 , neg: rec.balance < 0}">{{rec.balance | currency}}</td>
+        	        		</tr>
+        	        	</tbody>
+                	</table>
+                    <h4 ng-if="member.records.length == 0" class="text-muted text-center row">You have no bills
+                    </h4>
+                	<!-- <div class="billForUsers popover right">
+                		<div class="arrow"></div>
+            			<div class="popover-content">
+        					Hello
+            			</div>
+                	</div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <h4 class='text-muted text-center col-xs-12' ng-if="!groupBal.groups">You don't have any Groups!</h4>
+</div>

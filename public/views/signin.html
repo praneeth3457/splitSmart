@@ -1,0 +1,27 @@
+<div ng-controller="signCntrl as sign">
+	<h3>SIGN IN</h3><hr>
+    <h5 ng-if="sign.signinError == true" class="neg text-center">{{sign.signinErrorMsg}}</h6>
+	<table class="table loginTbl" ng-if="sign.signin != 'Success'">
+    	<tr>
+    		<th class="text-right space2"><label for="userName"><h4>User Name:</h4></label></th>
+    		<td class="text-left space2"><input type="text" class="tspace1 bspace1 lspace2 radius1" id="userName" ng-model="sign.loginUser.username" required placeholder="Your user name"/></td>
+            <td></td>
+    	</tr>
+    	<tr>
+    		<th class="text-right space2"><label for="password"><h4>Password:</h4></label></th>
+    		<td class="text-left space2"><input type="password" class="tspace1 bspace1 lspace2 radius1" id="password" ng-model="sign.loginUser.password" required placeholder="Enter password"/></td>
+            <td></td>
+    	</tr>
+    	<tr>
+    		<td></td>
+    		<td>
+    			<button type="button" class="btn btn-default" ng-click="sign.login()">Sign in</button>
+                <a href="#/signUp" class="loffset2">New User</a>
+    		</td>
+            <td></td>
+    	</tr>
+    </table>
+    <div ng-if="sign.signin == 'Success'" class="text-center">
+        <h3 class="glyphicon glyphicon-check pos text-center width">Successfully Logged In!</h3>
+    </div>
+</div>
