@@ -36,6 +36,7 @@ angular.module('split').controller('groupBalanceCntrl',
 		var groupMemberDetails = [];
 		var gmemberLength = group.gmembers.length;
 		var gbillsLength = group.gbills.length;
+		var owes = 0;
 		for(var i=0; i<gmemberLength; i++){
 
 			groupMemberDetails[i] = {
@@ -48,7 +49,12 @@ angular.module('split').controller('groupBalanceCntrl',
 
 			for(var j=0; j<gbillsLength; j++){
 				if(group.gbills[j].user == groupMemberDetails[i].MemberName){
-					var owes = (group.gbills[j].amount)/ (group.gbills[j].billFor.length);
+					owes = 0;
+					for(var z=0; z<group.gbills[j].billFor.length; z++){
+						if(group.gbills[j].billFor[z] == groupMemberDetails[i].MemberName){
+							owes = (group.gbills[j].amount)/ (group.gbills[j].billFor.length);
+						}
+					}
 					var balance = (group.gbills[j].amount - owes);
 
 					groupMemberDetails[i].records.push({
