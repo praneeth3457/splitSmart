@@ -55,6 +55,7 @@ angular.module('split').controller('groupBalanceCntrl',
 							owes = (group.gbills[j].amount)/ (group.gbills[j].billFor.length);
 						}
 					}
+					
 					var balance = (group.gbills[j].amount - owes);
 
 					groupMemberDetails[i].records.push({
