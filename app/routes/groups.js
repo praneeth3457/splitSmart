@@ -55,33 +55,43 @@ module.exports = function(app, express) {
 	api.post('/addGroupMember', function(req, res) {
 		User.findOne({username:req.body.gmemberUsername}, function(err, userName) {
 			if(userName){
-				Group.findOne({gname:req.body.gname}, function(err, groupsName) {	
+				Group.findOne({gname:req.body.gname}, function(err, groupsName) {
+				var userExist = false;	
 					if(groupsName){
-						Group.findByIdAndUpdate(
-						    groupsName._id,
-						    {$push: {"gmembers": {name : req.body.gmemberName, username : req.body.gmemberUsername}}},
-						    {safe: true, upsert: true},
-						    function(err, model) {
-						        console.log(err);
-						        console.log(model);
-						    }
-						);
-						groupsName.save(function(err) {
-							if(err) {
-								res.send({message: 'Unsuccess', 'error':err, 'notExist': false});
-								return;
+						for(var x=0; x<groupsName.gmembers.length; x++){
+							if(groupsName.gmembers[x].username == req.body.gmemberUsername){
+								userExist = true;
 							}
+						}
+						if(userExist == false){
+							Group.findByIdAndUpdate(
+							    groupsName._id,
+							    {$push: {"gmembers": {name : req.body.gmemberName, username : req.body.gmemberUsername}}},
+							    {safe: true, upsert: true},
+							    function(err, model) {
+							        console.log(err);
+							        console.log(model);
+							    }
+							);
+							groupsName.save(function(err) {
+								if(err) {
+									res.send({message: 'Unsuccess', 'error':err, 'notExist': false, 'exist': false});
+									return;
+								}
 
-							res.json({message: 'Success'});
-						});
+								res.json({message: 'Success'});
+							});
+						}else{
+							res.send({message: 'Unsuccess', 'error':err, 'notExist': false, 'exist': true});
+						}
 					}
 
 					if(err){
-						res.send({message: 'Unsuccess', 'error':err, 'notExist': false});
+						res.send({message: 'Unsuccess', 'error':err, 'notExist': false, 'exist': false});
 					}	
 				});
 			}else{
-				res.send({message: 'Unsuccess', 'error':err, 'notExist': true});
+				res.send({message: 'Unsuccess', 'error':err, 'notExist': true, 'exist': false});
 			}
 		});
 
@@ -136,7 +146,7 @@ module.exports = function(app, express) {
 		});
 	});
 
-	/*api.post('/delGroup', function(req, res) {
+	api.post('/delGroup', function(req, res) {
 		Group.findOneAndRemove({gname:req.body.groupName}, function(err, groupUser) {
 			if(groupUser){
 				Group.find({}, function(err, groups){
@@ -150,7 +160,7 @@ module.exports = function(app, express) {
 				res.send(err);
 			}
 		});
-	});*/
+	});
 
 	return api
 
