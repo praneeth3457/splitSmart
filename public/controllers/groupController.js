@@ -66,11 +66,12 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 				group.addaMember = false;
 				group.viewGroups = true;
 				group.isExist = false;
+				group.exist = false;
 				viewGroups(user.user.username);
 				group.viewGrp();
-			}
-			if(angular.isDefined(response) && angular.isDefined(response.notExist)){
-				group.isExist = true;
+			}else{
+				group.isExist = response.notExist;
+				group.exist = response.exist;
 			}
 		});
 	}
@@ -119,7 +120,7 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 		group.grpDelete = groupName;
 	}
 
-	/*group.addOnemore = function(groupName){
+	group.deleteGroup = function(groupName){
 		var groupDel = {
 			groupName : groupName
 		}
@@ -128,5 +129,5 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 				console.log(response);
 			}
 		});
-	}*/
+	}
 }]);

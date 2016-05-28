@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt-nodejs');
 
 var GroupSchema = new Schema({
-	gname: {type: String, required: true, index:{unique: true}},
+	gname: {type: String, required: true},
 	gtype: {type: String, required: true},
 	gmembers: [{ name: {type: String, required: true},
 				 username: {type: String, required: true, index:{unique: true}}

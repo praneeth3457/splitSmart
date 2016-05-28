@@ -84,6 +84,9 @@
 		    <div class="alert alert-danger" role="alert" ng-if="group.isExist == true">
 				<h5 class="alert-link"><i class="glyphicon glyphicon-warning-sign rspace2"></i>User doesn't exist. Before adding it to a group user should have an account!</h5>
 			</div>
+			<div class="alert alert-danger" role="alert" ng-if="group.exist == true">
+				<h5 class="alert-link"><i class="glyphicon glyphicon-warning-sign rspace2"></i>User already exists in the Group!</h5>
+			</div>
 
 			<!-- Add member to a group view -->
 	   		<h3 class="text-center">Add a Member</h3>
@@ -203,7 +206,7 @@
 			  	<h4 class="text-center width">Are you sure you want delete this group? {{group.grpDelete}}</h3>
 			  </div>
 			  <div class="modal-footer">
-					<button class="toffset2 btn btn-danger" type="button" ng-click="group.addOnemore(group.grpDelete)">Yes</button>
+					<button class="toffset2 btn btn-danger" type="button" ng-click="group.deleteGroup(group.grpDelete)">Yes</button>
 					<button type="button" class="btn btn-default toffset2" data-dismiss="modal">No</button>
 			  </div>
 		    </div>
