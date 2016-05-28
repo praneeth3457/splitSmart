@@ -119,14 +119,14 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 		group.grpDelete = groupName;
 	}
 
-	group.addOnemore = function(groupName){
-		/*var groupDel = {
+	/*group.addOnemore = function(groupName){
+		var groupDel = {
 			groupName : groupName
 		}
 		$http.post('/api2/delGroup', groupDel).success(function(response){
 			if(response){
 				console.log(response);
 			}
-		});*/
-	}
+		});
+	}*/
 }]);
