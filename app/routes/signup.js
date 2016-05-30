@@ -44,7 +44,7 @@ module.exports = function(app, express) {
 			}
 
 			if(!user){
-				return res.status(404).send();
+				return res.status(200).send({message:'Unsuccess'});
 			}
 			req.session.user = user;
 			return res.status(200).send({message:'Success', user: user});
