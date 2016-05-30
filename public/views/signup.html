@@ -29,13 +29,13 @@
     	</tr>
     	<tr>
     		<th class="text-right space2"><label for="cpassword"><h4>Confirm Password:</h4></label></th>
-    		<td class="text-left space2"><input type="password" class="tspace1 bspace1 lspace2 radius1" id="cpassword" ng-model="sign.cpassword" required placeholder="Confirm password"/></td>
-    		<td></td>
+    		<td class="text-left space2"><input type="password" class="tspace1 bspace1 lspace2 radius1" id="cpassword" ng-model="sign.cpassword" required placeholder="Confirm password" ng-change="sign.errorcpassword(sign.regUser.password, sign.cpassword)"/></td>
+    		<td ng-if="sign.checkcpassword == false" class="neg tspace3">Confirm password should match with password!</td>
     	</tr>
     	<tr>
     		<td></td>
     		<td>
-    			<button type="button" class="btn btn-default" ng-click="sign.registerUser()">Sign up</button>
+    			<button type="button" class="btn btn-default" ng-disabled="!(sign.checkfname)" ng-click="sign.registerUser()">Sign up</button>
     			<a href="#/signIn" class="loffset2">Already a User</a>
     		</td>
     		<td></td>

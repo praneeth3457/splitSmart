@@ -1,6 +1,7 @@
 <div ng-controller="signCntrl as sign">
 	<h3>SIGN IN</h3><hr>
     <h5 ng-if="sign.signinError == true" class="neg text-center">{{sign.signinErrorMsg}}</h6>
+    <h5 ng-if="sign.signinFail == true" class="neg text-center">{{sign.signinFailMsg}}</h6>
 	<table class="table loginTbl" ng-if="sign.signin != 'Success'">
     	<tr>
     		<th class="text-right space2"><label for="userName"><h4>User Name:</h4></label></th>
