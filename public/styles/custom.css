@@ -1,12 +1,14 @@
 /*comman css classes*/
 	/*For Margin*/
+	.offset0{margin: 0px;}
 	.offset1{margin: 5px;}
 	.offset2{margin: 10px;}
 	.offset3{margin: 15px;}
 	.offset4{margin: 20px;}
 	.offset5{margin: 25px;}
 	.offset6{margin: 30px;}
-
+	
+	.toffset0{margin-top: 0px;}
 	.toffset1{margin-top: 5px;}
 	.toffset2{margin-top: 10px;}
 	.toffset3{margin-top: 15px;}
@@ -14,20 +16,23 @@
 	.toffset5{margin-top: 25px;}
 	.toffset6{margin-top: 30px;}
 	
+	.boffset0{margin-bottom: 0px;}
 	.boffset1{margin-bottom: 5px;}
 	.boffset2{margin-bottom: 10px;}
 	.boffset3{margin-bottom: 15px;}
 	.boffset4{margin-bottom: 20px;}
 	.boffset5{margin-bottom: 25px;}
 	.boffset6{margin-bottom: 30px;}
-
+	
+	.loffset0{margin-left: 0px;}
 	.loffset1{margin-left: 5px;}
 	.loffset2{margin-left: 10px;}
 	.loffset3{margin-left: 15px;}
 	.loffset4{margin-left: 20px;}
 	.loffset5{margin-left: 25px;}
 	.loffset6{margin-left: 30px;}
-
+	
+	.roffset0{margin-right: 0px;}
 	.roffset1{margin-right: 5px;}
 	.roffset2{margin-right: 10px;}
 	.roffset3{margin-right: 15px;}

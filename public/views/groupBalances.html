@@ -5,6 +5,9 @@
         <option value="" ng-if="false"></option>
 		</select>
 	</div>
+    <div class="col-xs-7" ng-if="groupBal.groups.length > 0">
+        <button type="button" class="btn btn-success pull-right" ng-click="groupBal.settleup()" data-toggle="modal" data-target="#settleupPreviewModal" data-backdrop="static">Settle Up</button>
+    </div>
 	<hr class="col-xs-12" ng-if="groupBal.groups.length > 0"/>
 	<div class="panel-group col-xs-12" ng-if="groupBal.groups.length > 0">
         <div class="panel panel-default groupBalancePanel row" ng-repeat="member in groupMemberDetails">
@@ -74,4 +77,33 @@
         </div>
     </div>
     <h4 class='text-muted text-center col-xs-12' ng-if="!groupBal.groups">You don't have any Groups!</h4>
+
+    <div id="settleupPreviewModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="text-center pull-left offset0">Preview Your Settle Ups </h3>
+                <button type="button" class="close" data-dismiss="modal">X</button>
+              </div>
+              <div class="modal-body">
+                <table class="table">
+                    <tr>
+                        <th>Sno.</th>
+                        <th>Who owes Whom</th>
+                        <th>Amount</th>
+                    </tr>
+                    <tr ng-repeat="msg in groupBal.messages">
+                        <td>{{$index + 1}}</td>
+                        <td>{{msg.message}}</td>
+                        <td>{{msg.amount | currency}}</td>
+                    </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+                    <button class="toffset2 btn btn-danger confirmBtnSettleup" type="button" ng-click="groupBal.settleupConfirm(groupBal.selectedOption)" data-dismiss="modal">Confirm</button>
+                    <button type="button" class="btn btn-default toffset2" data-dismiss="modal">No</button>
+              </div>
+            </div>
+        </div>
+    </div>
 </div>

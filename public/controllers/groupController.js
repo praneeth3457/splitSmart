@@ -126,7 +126,7 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 		}
 		$http.post('/api2/delGroup', groupDel).success(function(response){
 			if(response){
-				console.log(response);
+				viewGroups(user.user.username);
 			}
 		});
 	}

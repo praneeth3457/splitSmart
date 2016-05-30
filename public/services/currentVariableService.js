@@ -3,7 +3,8 @@ angular.module('split')
         function() {
             var factory = {
                 user:"",
-                group:""
+                group:"",
+                groupBills:""
                 }
 
             factory.getUser = function () {
@@ -19,6 +20,13 @@ angular.module('split')
             }
             factory.getViewMessages = function () {
                 return factory.viewMessages;
+            };
+
+            factory.setGroupBills = function(groupBills) {
+                factory.groupBills = groupBills;
+            }
+            factory.getGroupBills = function () {
+                return factory.groupBills;
             };
 
             return factory;

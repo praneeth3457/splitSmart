@@ -116,3 +116,6 @@ body{
 	padding-left: 20px;
     padding-right: 20px;
 }
+#settleupPreviewModal table th{
+	border-top: none !important;
+}
