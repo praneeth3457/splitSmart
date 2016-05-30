@@ -151,7 +151,7 @@ module.exports = function(app, express) {
 			if(groupUser){
 				Group.find({}, function(err, groups){
 					console.log(groups);
-					res.send(groups);
+					res.send({deleted:'success'});
 				});
 			}
 

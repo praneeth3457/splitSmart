@@ -22,8 +22,10 @@ app.use(session({secret:"udj9sd8un8d678aaf76", resave:false, saveUninitialized:t
 
 var api = require('./app/routes/signup')(app, express);
 var groupApi = require('./app/routes/groups')(app, express);
+var settledApi = require('./app/routes/settledBills')(app, express);
 app.use('/api', api);
 app.use('/api2', groupApi);
+app.use('/api', settledApi);
 
 app.use(express.static(__dirname + '/public'));
 
@@ -33,5 +35,4 @@ app.listen(PORT, function(err){
 	}else{
 		console.log('Server running on port: 3000');
 	}
-	
 });
