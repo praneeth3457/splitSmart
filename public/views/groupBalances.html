@@ -42,7 +42,7 @@
         	        			<th>Sno.</th>
                                 <th>Date</th>
         	        			<th>Bill By</th>
-        	        			<th>Bill For</th>
+        	        			<th class="text-right">Bill For</th>
                                 <th class="text-right">Amount</th>
         	        			<th>Description</th>
         	        			<th class="text-right">You Owe</th>
@@ -55,7 +55,7 @@
         	        			<td>{{$index + 1}}</td>
                                 <td>{{rec.date | date}}</td>
         	        			<td>{{rec.billBy}}</td>
-        	        			<td>{{rec.billFor.length}} <i class="glyphicon glyphicon-question-sign" data-toggle="popover" data-trigger="click" data-target="#{{index}}"></i></td>
+        	        			<td class="text-right">{{rec.billFor.length}} <i id="mytooltip" ng-mouseover="groupBal.billforTooltip(rec.billFor)"class="glyphicon glyphicon-question-sign" data-placement="right" data-content="{{groupBal.content}}" data-trigger="hover" bs-popover></i>
                                 <td class="text-right">{{rec.amount | currency}}</td>
         	        			<td>{{rec.description}}</td>
         	        			<td class="text-right neg">{{rec.owes | currency}}</td>

@@ -1,8 +1,8 @@
-angular.module('split', ['ngRoute']).config(['$routeProvider',
+angular.module('split', ['ngRoute', 'mgcrea.ngStrap', 'ngSanitize']).config(['$routeProvider',
   	function($routeProvider) {
 		$routeProvider.
 			when('/', {
-			templateUrl: 'views/overview.html'
+			templateUrl: 'views/addGroup.html'
 		}).
 		when('/addGroup', {
 			templateUrl: 'views/addGroup.html'
@@ -20,7 +20,7 @@ angular.module('split', ['ngRoute']).config(['$routeProvider',
 			templateUrl: 'views/signup.html',
 		}).
 		otherwise({
-			redirectTo: 'views/overview.html'
+			redirectTo: 'views/addGroup.html'
 	});
 }]);
 

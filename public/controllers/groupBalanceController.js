@@ -203,13 +203,11 @@ angular.module('split').controller('groupBalanceCntrl',
 		}while(settleupTotal == true)
 
 		groupBal.messages = messages;
-		console.log(messages);
 	}
 
 	groupBal.settleupConfirm = function(group){
 		var settledDetails = [];
 		var settledBills = $currentVariableService.getGroupBills();
-		console.log(settledBills);
 		for(var b=0; b<settledBills.bills.length; b++){
 			if(settledBills.bills[b].amount){
 				settledDetails[b] = {
@@ -228,11 +226,21 @@ angular.module('split').controller('groupBalanceCntrl',
 		}
 
 		$http.post('/api/settled', settledRequest).success(function(response){
-			console.log(response);
-			groupBal.getGroupDetails(group);
+			getGroups(selectUser.user.username);
 		}).error(function(err){
-			console.log(response);
+
 		});
+	}
+
+	groupBal.content = "fg";
+
+	groupBal.billforTooltip = function(billFor){
+		var content = "";
+		for(var i=0; i<billFor.length-1; i++){
+			content += billFor[i] + ", ";
+		}
+		content += billFor[billFor.length - 1];
+		groupBal.content = content;
 	}
 
 }]);

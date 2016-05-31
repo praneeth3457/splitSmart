@@ -77,6 +77,7 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 	}
 
 	group.getGroupUsers = function(gname){
+		group.billStatus = 'unsuccess';
 		$http.post('/api2/getGroupUsers', {gname : gname}).success(function(response){
 			var grpusers = [];
 			if(response){
@@ -88,7 +89,6 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 	}
 
 	group.billSubmit = function(gname){
-		console.log(group)
 		var billFor = [];
 		for(var i=0; i<group.bill.forSelected.length; i++){
 			billFor.push(group.bill.forSelected[i].name); 
@@ -129,5 +129,15 @@ angular.module('split').controller('groupCntrl', ['$scope', '$http', '$currentVa
 				viewGroups(user.user.username);
 			}
 		});
+	}
+
+	group.content = "fg";
+	group.billforTooltip = function(billFor){
+		var content = "";
+		for(var i=0; i<billFor.length-1; i++){
+			content += billFor[i].name + ", ";
+		}
+		content += billFor[billFor.length - 1].name;
+		group.content = content;
 	}
 }]);

@@ -3,7 +3,6 @@ angular.module('split').controller('signCntrl', ['$scope', '$http', '$currentVar
 	var selectUser = $currentVariableService.getUser();
 
 	$scope.$on('loggedOut', function(event, obj){
-		console.log(obj);
 	});
 
 	if(selectUser.signIn == true){
@@ -69,7 +68,6 @@ angular.module('split').controller('signCntrl', ['$scope', '$http', '$currentVar
 	}
 
 	sign.registerUser = function(){
-		console.log(sign.cpassword); console.log(sign.regUser.password);
 		if(sign.cpassword == sign.regUser.password){
 			sign.checkcpassword = true;
 			$http.post('/api/signup', sign.regUser).success(function(response){
