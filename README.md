@@ -6,6 +6,8 @@ Split-smart is an application for the group of people (Friends/Family/Roommates/
 
 For application :https://praneeth-splitsmart.herokuapp.com/
 
+To test the application you can sign up or you can sign in by dummy credentials : fname123/12345
+
 ## technologies used in this application
 
 ##### Frontend :
